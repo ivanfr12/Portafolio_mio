@@ -32,3 +32,148 @@
             from, to { border-color: transparent }
             50% { border-color: #3b82f6; }
         }
+
+/* Mejoras responsive */
+        
+        /* Ajustes generales */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Ajuste del typewriter para móviles */
+            .typewriter {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+                overflow: visible;
+                width: 100%;
+            }
+            
+            /* Mejora en los títulos */
+            h1 {
+                font-size: 1.8rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Ajuste de la sección hero */
+            header .flex {
+                flex-direction: column;
+            }
+            
+            /* Espaciado mejorado para móviles */
+            .py-16, .py-20 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            /* Mejora en las grids */
+            .grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            /* Ajuste de texto en botones y elementos importantes */
+            .text-xl, .text-lg {
+                font-size: 1rem !important;
+            }
+            
+            /* Imagen responsive */
+            img {
+                max-width: 100% !important;
+                height: auto;
+                margin-top: 1.5rem;
+            }
+        }
+        
+        /* Ajustes para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        /* Mejora de elementos interactivos para touch */
+        @media (hover: none) {
+            .card-hover:hover {
+                transform: none;
+            }
+            
+            /* Mejor feedback táctil */
+            .card-hover:active {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+        }
+        
+        /* Mejora de legibilidad en móviles */
+        @media (max-width: 640px) {
+            body {
+                font-size: 16px; /* Previene el zoom en iOS */
+            }
+            
+            /* Ajuste de botones para touch */
+            a, button {
+                min-height: 44px; /* Tamaño mínimo para touch */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            /* Espaciado en skills */
+            .gap-4 {
+                gap: 0.5rem !important;
+            }
+            
+            .px-4 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .py-2 {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+        }
+        
+        /* Prevención de desbordamiento horizontal */
+        body, html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Mejora de contraste para modo oscuro */
+        @media (prefers-color-scheme: dark) {
+            .bg-white {
+                background-color: #1a202c !important;
+                color: #e2e8f0 !important;
+            }
+            
+            .bg-gray-50 {
+                background-color: #2d3748 !important;
+            }
+            
+            .text-gray-800 {
+                color: #e2e8f0 !important;
+            }
+            
+            .text-gray-600 {
+                color: #cbd5e0 !important;
+            }
+            
+            .bg-white span {
+                background-color: #4a5568 !important;
+                color: #e2e8f0 !important;
+            }
+        }
+
+
