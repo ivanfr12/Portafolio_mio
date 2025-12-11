@@ -1,168 +1,697 @@
 <!DOCTYPE html>
-<html lang="es-mx">
+<html lang="es">
 <head>
-    <meta charset="UTF-8"> 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>Iván Rodríguez | Cloud Engineer & DevOps</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .tech-badge {
+            @apply bg-white px-4 py-2 rounded-full text-gray-800 font-medium shadow-sm transition hover:shadow-md hover:scale-105;
+        }
         
-    </style>
+        /* NUEVOS TÍTULOS MEJORADOS */
+        .section-title {
+            @apply text-4xl md:text-5xl font-extrabold text-center mb-12 relative;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 20px;
+        }
 
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                rgba(59, 130, 246, 0) 0%, 
+                rgba(59, 130, 246, 0.8) 50%, 
+                rgba(59, 130, 246, 0) 100%);
+            border-radius: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 6px;
+            background: #3b82f6;
+            border-radius: 3px;
+        }
+
+        /* Colores específicos para cada sección */
+        #about .section-title {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        #skills .section-title {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        #skills .section-title::after {
+            background: #10b981;
+        }
+
+        #certifications .section-title {
+            background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+            margin-bottom: 2rem !important;
+        }
+
+        #certifications .section-title::after {
+            background: #8b5cf6;
+        }
+
+        #projects .section-title {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        #projects .section-title::after {
+            background: #fbbf24;
+        }
+
+        #contact .section-title {
+            background: linear-gradient(135deg, #ffffff 0%, #dbeafe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #contact .section-title::after {
+            background: #ffffff;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6; }
+        }
+        .contact-button {
+            @apply bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-blue-50 transition duration-300 
+                   border border-blue-200 flex items-center justify-center space-x-2;
+        }
+    </style>
 </head>
 <body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center">
+                <i class="fas fa-cloud mr-2"></i>Iván Rodríguez
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-blue-200 transition">Sobre mí</a>
+                <a href="#skills" class="hover:text-blue-200 transition">Habilidades</a>
+                <a href="#certifications" class="hover:text-blue-200 transition">Certificaciones</a>
+                <a href="https://github.com/ivanfr12" target="_blank" class="hover:text-blue-200 transition">Proyectos en GitHub</a>
+                <a href="#contact" class="hover:text-blue-200 transition">Contacto</a>
+            </div>
+            <a href="#contact" class="contact-button md:hidden text-sm">
+                <i class="fas fa-envelope"></i>
+                <span>Contacto</span>
+            </a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Lleva tu negocio digital al <span class="text-blue-300">siguiente nivel</span></h1>
-                <p class="text-xl mb-8">Con desarrollo seguro y eficiente</p>
-                <div class="typewriter text-2xl font-mono mb-8">¡Hola! Soy Iván Rodríguez</div>
-                <p class="text-lg mb-8 opacity-90">Desarrollador Full Stack y especialista en ciberseguridad apasionado por crear soluciones seguras y eficientes para negocios y profesionales.</p>
-                <a href="#" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-blue-100 transition duration-300 inline-block">¿Hablamos? 🚀</a>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    Cloud Engineer & DevOps<br>
+                    <span class="text-blue-300">en formación</span>
+                </h1>
+                <div class="typewriter text-2xl font-mono mb-6">
+                    #AWS #OCI #DevOps #Automation
+                </div>
+                <p class="text-lg mb-8 opacity-90">
+                    Profesional certificado en AWS Cloud Practitioner y Oracle OCI Foundations. 
+                    Especializado en infraestructura cloud, automatización y seguridad. 
+                    Busco oportunidades para contribuir en entornos DevOps/Cloud mientras continúo 
+                    mi desarrollo profesional.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full">
+                        <i class="fas fa-certificate mr-2"></i>AWS Certified
+                    </span>
+                    <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full">
+                        <i class="fas fa-cloud mr-2"></i>Oracle OCI
+                    </span>
+                    <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full">
+                        <i class="fas fa-code mr-2"></i>Python/Java
+                    </span>
+                    <span class="bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full">
+                        <i class="fas fa-shield-alt mr-2"></i>Cloud Security
+                    </span>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="contact-button">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contactar por Email</span>
+                    </a>
+                    <a href="https://github.com/ivanfr12" target="_blank" 
+                       class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full 
+                              hover:bg-white hover:text-blue-600 transition duration-300 inline-flex items-center">
+                        <i class="fab fa-github mr-2"></i>
+                        <span>Ver Proyectos en GitHub</span>
+                    </a>
+                </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <img src="https://portafolio-mio-rho.vercel.app/assets/ilustracion-de-seguridad-cibernetica.jpg" 
-                     alt="Ilustración de seguridad cibernética" 
-                     class="rounded-lg shadow-2xl max-w-full h-auto md:max-w-md">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Cloud Infrastructure" 
+                         class="rounded-lg shadow-2xl max-w-full h-auto">
+                    <div class="absolute -bottom-4 -right-4 bg-blue-500 text-white p-4 rounded-lg shadow-xl">
+                        <div class="text-2xl font-bold">2+</div>
+                        <div class="text-sm">Certificaciones Cloud</div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- About Section -->
-    <section class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Sobre mí</h2>
-                <p class="text-lg text-gray-600 mb-12 leading-relaxed">
-                    Profesional con experiencia en ethical hacking, monitoreo de seguridad, soporte técnico y administración de redes. Desarrollo aplicaciones web utilizando Python, Flask, Django, JavaScript, HTML, CSS y Bootstrap, gestiono bases de datos como MySQL y SQLite, y actualmente me estoy especializando en AWS Cloud Practitioner.
+            <div class="text-center mb-12">
+                <h2 class="section-title">Sobre mí</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Mi trayectoria y enfoque profesional en tecnología cloud
                 </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl p-8 mb-8 card-hover">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Soy un <strong>Cloud Engineer en formación</strong> con certificaciones en 
+                        <strong>AWS Cloud Practitioner</strong> y <strong>Oracle OCI Foundations</strong>. 
+                        Mi enfoque combina infraestructura cloud, automatización y seguridad, 
+                        con experiencia práctica en despliegue de servicios AWS, implementación 
+                        de Infraestructura como Código (CloudFormation), y scripting en Python/Bash.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">
+                        Complemento mis habilidades cloud con conocimientos en <strong>redes Cisco</strong>, 
+                        administración de sistemas <strong>Linux</strong>, y principios de 
+                        <strong>ciberseguridad aplicada</strong>. Actualmente en proceso de 
+                        especialización en herramientas DevOps (Docker, Kubernetes, CI/CD).
+                    </p>
+                </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover transition duration-300">
-                        <i class="fas fa-shield-alt text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="font-bold text-gray-800">Ciberseguridad</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl card-hover border border-blue-100">
+                        <i class="fas fa-cloud text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="font-bold text-gray-800 text-xl mb-2">Cloud Computing</h3>
+                        <p class="text-gray-600">AWS, Oracle OCI, Infraestructura como Código, Automatización</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover transition duration-300">
+                    <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl card-hover border border-blue-100">
                         <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="font-bold text-gray-800">Desarrollo Full Stack</h3>
+                        <h3 class="font-bold text-gray-800 text-xl mb-2">Desarrollo</h3>
+                        <p class="text-gray-600">Python, Java, APIs REST, Bases de Datos, Scripting</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover transition duration-300">
-                        <i class="fas fa-database text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="font-bold text-gray-800">Bases de Datos</h3>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover transition duration-300">
-                        <i class="fas fa-network-wired text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="font-bold text-gray-800">Redes</h3>
+                    <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl card-hover border border-blue-100">
+                        <i class="fas fa-shield-alt text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="font-bold text-gray-800 text-xl mb-2">DevOps & Security</h3>
+                        <p class="text-gray-600">Docker, Linux, Redes, Seguridad Cloud, Automatización</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- Skills Section -->
-<section class="py-20 bg-gray-50">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
-      Habilidades y Tecnologías
-    </h2>
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Habilidades Técnicas</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Tecnologías y herramientas que domino
+                </p>
+            </div>
+            
+            <!-- Cloud Platforms -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                    <i class="fas fa-cloud text-blue-500 mr-2"></i>Cloud Platforms
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+                    <span class="tech-badge">AWS EC2/S3</span>
+                    <span class="tech-badge">AWS IAM</span>
+                    <span class="tech-badge">AWS Lambda</span>
+                    <span class="tech-badge">AWS VPC</span>
+                    <span class="tech-badge">Oracle OCI</span>
+                    <span class="tech-badge">CloudFormation</span>
+                </div>
+            </div>
 
-    <!-- Ciberseguridad -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold text-gray-50 mb-6 text-center">🔐 Ciberseguridad</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Linux</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Windows</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Wazuh</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Zabbix</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Nmap</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Wireshark</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Snort/Suricata</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Metasploit</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Nessus</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">OpenVAS</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Burp Suite</span>
-      </div>
-    </div>
+            <!-- DevOps & Automation -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                    <i class="fas fa-cogs text-blue-500 mr-2"></i>DevOps & Automation
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Linux/Bash</span>
+                    <span class="tech-badge">Git/GitHub</span>
+                    <span class="tech-badge">Python Scripting</span>
+                    <span class="tech-badge">CI/CD Concepts</span>
+                    <span class="tech-badge">Infrastructure as Code</span>
+                </div>
+            </div>
 
-    <!-- Lenguajes -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold text-gray-50 mb-6 text-center">💻 Lenguajes</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Python</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Bash</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Java</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">PHP</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">JavaScript</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Typescript</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">HTML</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">CCS</span>
-      </div>
-    </div>
+            <!-- Development -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                    <i class="fas fa-code text-blue-500 mr-2"></i>Desarrollo
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Java</span>
+                    <span class="tech-badge">Spring Boot</span>
+                    <span class="tech-badge">Flask/FastAPI</span>
+                    <span class="tech-badge">API REST</span>
+                    <span class="tech-badge">JavaScript</span>
+                </div>
+            </div>
 
-    <!-- Frameworks -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold text-gray-50 mb-6 text-center">⚙ Frameworks</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Spring Boot</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Flask</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Django</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Angular</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">Bootstrap</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">TailwindCSS</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">REST API</span>
-
-      </div>
-    </div>
-
-    
-
-    <!-- Bases de Datos -->
-    <div>
-      <h3 class="text-2xl font-semibold text-gray-50 mb-6 text-center">🗄 Bases de Datos</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">MySQL</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">PostgreSQL</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">DynamoDB</span>
-        <span class="bg-white px-4 py-2 rounded-full text-center shadow-sm">SQLite</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Skills Section Control de Versiones -->
-<section class="py-10 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-50 mb-12">Control de Versiones</h2>
-        <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            <span class="bg-white px-4 py-2 rounded-full text-gray-800 font-medium shadow-sm">Git</span>
-            <span class="bg-white px-4 py-2 rounded-full text-gray-800 font-medium shadow-sm">GitHub</span>
+            <!-- Databases & Security -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                    <i class="fas fa-database text-blue-500 mr-2"></i>Bases de Datos & Seguridad
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">SQLite</span>
+                    <span class="tech-badge">Cloud Security</span>
+                    <span class="tech-badge">Linux Security</span>
+                    <span class="tech-badge">Network Security</span>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Certificaciones y Formación</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Certificaciones oficiales y formación especializada en Cloud, Ciberseguridad y Desarrollo
+                </p>
+            </div>
+            
+            <!-- Categoría 1: Cloud -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center border-b pb-2">
+                    <i class="fas fa-cloud text-blue-500 mr-2"></i>Cloud Computing
+                </h3>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- AWS -->
+                    <div class="bg-gradient-to-r from-orange-50 to-white p-6 rounded-xl card-hover border-l-4 border-orange-500">
+                        <div class="flex items-start mb-4">
+                            <i class="fab fa-aws text-4xl text-orange-500 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">AWS Cloud Practitioner</h3>
+                                <p class="text-blue-600 font-medium">Potrero Digital & Accenture • 2025</p>
+                                <div class="mt-2">
+                                    <a href="https://www.credly.com/badges/4a96f924-8652-4be0-b12b-27c8f9dd56ea/public_url" target="_blank" 
+                                       class="inline-flex items-center text-sm text-orange-600 hover:text-orange-800">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        Verificar en Credly
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Fundamentos de AWS: servicios cloud, seguridad, arquitectura y modelo de precios.</p>
+                    </div>
+
+                    <!-- Oracle OCI -->
+                    <div class="bg-gradient-to-r from-red-50 to-white p-6 rounded-xl card-hover border-l-4 border-red-700">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-database text-4xl text-red-700 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Oracle OCI Foundations Associate</h3>
+                                <p class="text-blue-600 font-medium">Oracle + Alura LATAM • 2025</p>
+                                <div class="mt-2">
+                                    <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=807BCE8A633D406F1A6C734A9A35AA7C31EC537A340710B5AAA89AF151B8713E" target="_blank" 
+                                       class="inline-flex items-center text-sm text-red-600 hover:text-red-800">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        Verificar en Credly
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Conceptos fundamentales de Oracle Cloud Infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoría 2: Ciberseguridad -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center border-b pb-2">
+                    <i class="fas fa-shield-alt text-purple-500 mr-2"></i>Ciberseguridad
+                </h3>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Máster en Ciberseguridad -->
+                    <div class="bg-gradient-to-r from-blue-50 to-white p-6 rounded-xl card-hover border-l-4 border-blue-500">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-graduation-cap text-4xl text-blue-600 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Máster en Ciberseguridad</h3>
+                                <p class="text-blue-600 font-medium">Universidad Libre de Defensa Argentina • En curso (2025)</p>
+                                <p class="text-sm text-gray-500 mt-1">CUC - Ciclo de Complementación Curricular</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Programa de especialización en seguridad informática, análisis de vulnerabilidades y gestión de incidentes.</p>
+                    </div>
+
+                    <!-- Cisco CyberOps -->
+                    <div class="bg-gradient-to-r from-blue-50 to-white p-6 rounded-xl card-hover border-l-4 border-blue-400">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-network-wired text-4xl text-blue-500 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Cisco Cybersecurity Operations (CyberOps)</h3>
+                                <p class="text-blue-600 font-medium">Cisco Networking Academy • 2025</p>
+                                <div class="mt-2">
+                                    <a href="https://www.credly.com/badges/dfe72468-157f-456c-a462-f7e41e8be0ad/public_url" target="_blank" 
+                                       class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        Verificar certificación
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Fundamentos de operaciones de ciberseguridad, monitoreo SOC y respuesta a incidentes.</p>
+                    </div>
+
+                    <!-- Analista SOC -->
+                    <div class="bg-gradient-to-r from-purple-50 to-white p-6 rounded-xl card-hover border-l-4 border-purple-500">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-user-shield text-4xl text-purple-500 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Analista SOC y Fundamentos de Ciberseguridad</h3>
+                                <p class="text-blue-600 font-medium">Comunidad Dojo • 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Monitoreo SOC, análisis de alertas y gestión de incidentes de seguridad.</p>
+                    </div>
+
+                    <!-- Ethical Hacking -->
+                    <div class="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl card-hover border-l-4 border-gray-600">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-user-secret text-4xl text-gray-700 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Ethical Hacking & Penetration Tester (CEHTP)</h3>
+                                <p class="text-blue-600 font-medium">Cyberland Academy • 2024</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Técnicas de hacking ético, pentesting y evaluación de vulnerabilidades.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoría 3: Desarrollo & Programación -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center border-b pb-2">
+                    <i class="fas fa-code text-green-500 mr-2"></i>Desarrollo & Programación
+                </h3>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Programación Java -->
+                    <div class="bg-gradient-to-r from-green-50 to-white p-6 rounded-xl card-hover border-l-4 border-green-600">
+                        <div class="flex items-start mb-4">
+                            <i class="fab fa-java text-4xl text-red-500 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Programación Java</h3>
+                                <p class="text-blue-600 font-medium">Alura LATAM & Oracle ONE • 2025</p>
+                                <p class="text-sm text-gray-500 mt-1">Especialización Backend con Spring Boot</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Desarrollo backend con Java, Spring Boot, APIs REST y principios de arquitectura.</p>
+                    </div>
+
+                    <!-- Programación Full Stack -->
+                    <div class="bg-gradient-to-r from-blue-50 to-white p-6 rounded-xl card-hover border-l-4 border-blue-400">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-layer-group text-4xl text-blue-500 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Programación Full Stack</h3>
+                                <p class="text-blue-600 font-medium">Digitalers Telecom • 2024</p>
+                                <p class="text-sm text-gray-500 mt-1">HTML, CSS, JavaScript, Python, Flask, Bases de datos</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Desarrollo completo de aplicaciones web frontend y backend.</p>
+                    </div>
+
+                    <!-- Cisco Networking Pro -->
+                    <div class="bg-gradient-to-r from-blue-50 to-white p-6 rounded-xl card-hover border-l-4 border-blue-500">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-network-wired text-4xl text-blue-500 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Cisco Networking Pro</h3>
+                                <p class="text-blue-600 font-medium">Cisco Networking Academy • 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Fundamentos de redes, routing, switching y seguridad de redes.</p>
+                    </div>
+
+                    <!-- Soporte en Ciberseguridad -->
+                    <div class="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl card-hover border-l-4 border-gray-500">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-headset text-4xl text-gray-600 mr-4 mt-1"></i>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-xl text-gray-800">Soporte en Ciberseguridad (CSST)</h3>
+                                <p class="text-blue-600 font-medium">Academia Cisco Oracle Gabriel Taborín • 2024</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Fundamentos de soporte técnico aplicado a seguridad informática.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota sobre verificación -->
+            <div class="max-w-3xl mx-auto mt-12 p-6 bg-blue-50 rounded-xl border border-blue-200 text-center">
+                <i class="fas fa-info-circle text-blue-500 text-2xl mb-4"></i>
+                <h4 class="font-bold text-lg text-gray-800 mb-2">Todas las certificaciones son verificables</h4>
+                <p class="text-gray-600">
+                    Las certificaciones oficiales incluyen enlaces a Credly o plataformas de verificación.
+                    Para detalles completos, visita mi 
+                    <a href="https://www.linkedin.com/in/ivan-francisco-rodriguez/details/certifications/" 
+                       target="_blank" class="text-blue-600 hover:underline font-medium">
+                        perfil de LinkedIn
+                    </a>.
+                </p>
+            </div>
+
+            <!-- Banner Credly -->
+            <div class="max-w-3xl mx-auto mt-12 p-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl text-center shadow-xl">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full mb-6">
+                    <i class="fas fa-award text-3xl text-blue-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Todas mis certificaciones verificables</h3>
+                <p class="text-blue-100 mb-6 text-lg">
+                    Accede a mi perfil completo en Credly para ver todas las certificaciones, 
+                    incluyendo Cisco, AWS, Oracle y más.
+                </p>
+                <a href="https://www.credly.com/users/ivan-francisco-rodriguez/" 
+                   target="_blank"
+                   class="inline-flex items-center justify-center bg-white text-blue-600 font-bold py-4 px-8 rounded-full 
+                          hover:bg-blue-50 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-creative-commons-sampling text-xl mr-3"></i>
+                    Ver todas las certificaciones en Credly
+                    <i class="fas fa-external-link-alt ml-3"></i>
+                </a>
+                <p class="text-blue-200 text-sm mt-4">
+                    Verificación oficial de certificaciones • Actualizado 2025
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Todos mis proyectos están disponibles en GitHub con código fuente y documentación
+                </p>
+                <a href="https://github.com/ivanfr12" target="_blank" 
+                   class="inline-flex items-center mt-6 text-blue-600 hover:text-blue-800 font-medium">
+                    <i class="fab fa-github mr-2 text-xl"></i>
+                    Ver repositorio completo en GitHub
+                </a>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proyecto 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-cloud text-blue-500 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-gray-800">Infraestructura Cloud AWS</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Despliegue automatizado con CloudFormation: VPC, EC2, S3, Security Groups.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full">AWS</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full">CloudFormation</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Infraestructura</span>
+                        </div>
+                        <a href="https://github.com/ivanfr12" target="_blank" 
+                           class="text-blue-500 font-medium hover:text-blue-700 transition inline-flex items-center">
+                            <i class="fab fa-github mr-2"></i>Ver código en GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-code text-green-500 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-gray-800">API REST Spring Boot</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            API para gestión de inventarios con Java Spring Boot y MySQL.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full">Java</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full">Spring Boot</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full">API REST</span>
+                        </div>
+                        <a href="https://github.com/ivanfr12/Sistema-de-Inventario-" target="_blank" 
+                           class="text-blue-500 font-medium hover:text-blue-700 transition inline-flex items-center">
+                            <i class="fab fa-github mr-2"></i>Ver código en GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-robot text-purple-500 text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-gray-800">Clasificador de Alertas ML</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Modelo de Machine Learning para priorización de alertas de seguridad.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Python</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full">ML</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Seguridad</span>
+                        </div>
+                          <!-- Projects Section (continuación) -->
+                        <a href="https://github.com/ivanfr12/cybersecurity-alert-classifier" target="_blank" 
+                           class="text-blue-500 font-medium hover:text-blue-700 transition inline-flex items-center">
+                            <i class="fab fa-github mr-2"></i>Ver código en GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Botón central para GitHub -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/ivanfr12?tab=repositories" target="_blank" 
+                   class="inline-flex items-center bg-gray-800 text-white font-bold py-3 px-8 rounded-full 
+                          hover:bg-gray-900 transition duration-300">
+                    <i class="fab fa-github mr-3 text-xl"></i>
+                    Explorar todos los proyectos en GitHub
+                    <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Conectemos</h2>
-                <p class="text-lg text-gray-600 mb-12">Accede a mis redes profesionales y conozcámonos mejor.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">¿Trabajamos Juntos?</h2>
+                <p class="text-xl mb-12 opacity-90">
+                    Estoy abierto a oportunidades como Cloud Engineer Trainee, DevOps Junior o roles relacionados.
+                    <br>Prefiero el contacto inicial por email o LinkedIn.
+                </p>
                 
-                <div class="flex justify-center space-x-8">
-                    <a href="https://github.com/ivanfr12" target="_blank" class="social-icon">
-                        <div class="bg-gray-800 text-white p-4 rounded-full w-16 h-16 flex items-center justify-center hover:bg-gray-700">
-                            <i class="fab fa-github text-2xl"></i>
-                        </div>
-                        <p class="mt-2 font-medium">GitHub</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white bg-opacity-10 p-8 rounded-2xl backdrop-blur-sm card-hover">
+                        <i class="fas fa-envelope text-4xl mb-6 text-blue-200"></i>
+                        <h3 class="font-bold text-2xl mb-4">Email</h3>
+                        <a href="mailto:ivan.rodriguez.cv@gmail.com" 
+                           class="text-2xl font-medium text-blue-200 hover:text-white transition hover:underline">
+                            ivan.rodriguez.cv@gmail.com
+                        </a>
+                        <p class="mt-4 text-blue-100">Respuesta en menos de 24 horas</p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 p-8 rounded-2xl backdrop-blur-sm card-hover">
+                        <i class="fas fa-map-marker-alt text-4xl mb-6 text-blue-200"></i>
+                        <h3 class="font-bold text-2xl mb-4">Ubicación & Disponibilidad</h3>
+                        <p class="text-xl mb-2">📍 Paraná, Entre Ríos, Argentina</p>
+                        <p class="text-lg text-blue-100">🌍 Modalidad Remota/Híbrida</p>
+                        <p class="text-lg text-blue-100 mt-2">⏰ Disponibilidad Full-Time</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center space-x-8 mb-12">
+                    <a href="https://linkedin.com/in/ivan-francisco-rodriguez" target="_blank" 
+                       class="bg-white text-blue-600 p-5 rounded-full w-20 h-20 flex items-center justify-center 
+                              hover:bg-blue-100 transition transform hover:scale-110 shadow-lg">
+                        <i class="fab fa-linkedin-in text-3xl"></i>
                     </a>
-                    <a href="https://linkedin.com/in/" target="_blank" class="social-icon">
-                        <div class="bg-blue-600 text-white p-4 rounded-full w-16 h-16 flex items-center justify-center hover:bg-blue-500">
-                            <i class="fab fa-linkedin-in text-2xl"></i>
-                        </div>
-                        <p class="mt-2 font-medium">LinkedIn</p>
+                    <a href="https://github.com/ivanfr12" target="_blank" 
+                       class="bg-white text-gray-800 p-5 rounded-full w-20 h-20 flex items-center justify-center 
+                              hover:bg-gray-200 transition transform hover:scale-110 shadow-lg">
+                        <i class="fab fa-github text-3xl"></i>
+                    </a>
+                    <a href="mailto:ivan.rodriguez.cv@gmail.com" 
+                       class="bg-white text-red-500 p-5 rounded-full w-20 h-20 flex items-center justify-center 
+                              hover:bg-red-100 transition transform hover:scale-110 shadow-lg">
+                        <i class="fas fa-envelope text-3xl"></i>
+                    </a>
+                </div>
+
+                <div class="mt-12">
+                    <a href="#contact" class="contact-button bg-white text-blue-600 hover:bg-blue-50 inline-block">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        <span>Enviar Mensaje Directo</span>
                     </a>
                 </div>
             </div>
@@ -170,28 +699,92 @@
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-bg text-white py-8">
+    <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6 text-center">
-          <p>
-    <a href="mailto:ivanrodriguez@gmail.com" class="text-blue-400 hover:text-blue-200 transition duration-300">
-      📧 ivan.rodriguez.cv@gmail.com
-    </a>
-  </p>
-            <p>&copy; 2023 Iván Rodríguez. Todos los derechos reservados.</p>
+            <div class="mb-6 flex flex-wrap justify-center gap-4">
+                <a href="https://drive.google.com/file/d/your-cv-link/view" target="_blank" 
+                   class="bg-blue-500 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-600 
+                          transition inline-flex items-center">
+                    <i class="fas fa-download mr-2"></i>Descargar CV
+                </a>
+                <a href="https://github.com/ivanfr12?tab=repositories" target="_blank"
+                   class="bg-gray-700 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-800 
+                          transition inline-flex items-center">
+                    <i class="fab fa-github mr-2"></i>Ver Proyectos
+                </a>
+                <a href="https://www.credly.com/users/ivan-francisco-rodriguez/" target="_blank"
+                   class="bg-purple-600 text-white font-bold py-3 px-6 rounded-full hover:bg-purple-700 
+                          transition inline-flex items-center">
+                    <i class="fas fa-award mr-2"></i>Certificaciones
+                </a>
+            </div>
+
+            <div class="mt-6">
+                <a href="https://www.credly.com/users/ivan-francisco-rodriguez/" 
+                   target="_blank"
+                   class="inline-flex items-center text-gray-400 hover:text-white transition group">
+                    <div class="bg-gray-700 group-hover:bg-blue-600 p-2 rounded-lg mr-3 transition">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-medium">Certificaciones verificadas</div>
+                        <div class="text-xs text-gray-500 group-hover:text-gray-300">Ver en Credly</div>
+                    </div>
+                    <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                </a>
+            </div>
+
+            <p class="text-gray-400 mt-6 mb-4">
+                <i class="fas fa-copyright mr-2"></i>2024 Iván Rodríguez. Todos los derechos reservados.
+            </p>
+            <p class="text-gray-400">
+                Cloud Engineer • DevOps • AWS Certified • Oracle OCI • Automation
+            </p>
+            <div class="mt-6 text-gray-500 text-sm">
+                <p>Contacto preferido: email o LinkedIn</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Simple animation trigger
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card-hover');
-            
-            cards.forEach((card, index) => {
-                // Add delay to each card animation
-                card.style.transitionDelay = `${index * 0.1}s`;
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-            
-            // Typewriter effect for multiple lines could be added here
+        });
+
+        // Email copy functionality (optional)
+        const emailButton = document.querySelector('a[href^="mailto:"]');
+        if (emailButton) {
+            emailButton.addEventListener('click', function(e) {
+                // Optional: Add copy to clipboard functionality
+                // navigator.clipboard.writeText('ivan.rodriguez.cv@gmail.com');
+            });
+        }
+
+        // Add scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            observer.observe(card);
         });
     </script>
 </body>
